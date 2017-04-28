@@ -1,6 +1,6 @@
 require 'active_record/associations/join_dependency/join_part'
 
-if ActiveRecord::VERSION::STRING =~ /^5\.0/
+if ActiveRecord::VERSION::STRING =~ /^5\.1/
   module ActiveRecord
 
     class Base
@@ -265,8 +265,8 @@ if ActiveRecord::VERSION::STRING =~ /^5\.0/
           scope = scope.joins(join(foreign_table, constraint))
         end
 
-        def last_chain_scope(scope, table, reflection, owner, association_klass)
-          join_keys = reflection.join_keys(association_klass)
+        def last_chain_scope(scope, table, reflection, owner)
+          join_keys = reflection.join_keys
           key = join_keys.key
           foreign_key = join_keys.foreign_key
 
